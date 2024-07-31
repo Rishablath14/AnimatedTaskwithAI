@@ -6,6 +6,7 @@ const {
 
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -25,13 +26,13 @@ export default {
       keyframes: {
         moveHorizontal: {
           "0%": {
-            transform: "translateX(-50%) translateY(-10%)",
+            transform: "translateX(-50%) translateY(-60%)",
           },
           "50%": {
-            transform: "translateX(50%) translateY(10%)",
+            transform: "translateX(50%) translateY(60%)",
           },
           "100%": {
-            transform: "translateX(-50%) translateY(-10%)",
+            transform: "translateX(-50%) translateY(-60%)",
           },
         },
         moveInCircle: {

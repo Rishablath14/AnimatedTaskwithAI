@@ -1,14 +1,14 @@
 {
-  "name": "igt-backend",
+  "name": "atma-backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Rishab Lath",
   "license": "ISC",
   "dependencies": {
     "@google/generative-ai": "^0.12.0",

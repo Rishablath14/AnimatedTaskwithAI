@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+
+  web:
+    depends_on:
+      - api
+    build: ./atma-frontend
+    ports:
+      - 5173:5173
+    develop:
+      watch:
+        - path: ./atma-frontend/package.json
+          action: rebuild
+        - path: ./atma-frontend/package-lock.json
+          action: rebuild
+        - path: ./atma-frontend
+          target: /app
+          action: sync
+
+  api:
+    build: ./atma-backend
+    ports:
+      - 5000:5000
+    env_file:
+      - ./atma-backend/.env
+    develop:
+      watch:
+        - path: ./atma-backend/package.json
+          action: rebuild
+        - path: ./atma-backend/package-lock.json
+          action: rebuild
+        - path: ./atma-backend
+          target: /app
+          action: sync  
+
+volumes:
+    animated-task-app:
+

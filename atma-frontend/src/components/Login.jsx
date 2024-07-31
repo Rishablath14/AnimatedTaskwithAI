@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 "use client";
-import { Label } from "./label";
+import { Label } from "./Label";
 import { cn } from "../utils/cn";
-import { Input } from "./input";
+import { Input } from "./Input";
 import { BackgroundGradientAnimation } from "./backgrad";
 import { useEffect, useState } from "react";
 import {Link, useNavigate} from "react-router-dom"
@@ -23,7 +23,7 @@ export function LoginFormDemo() {
     {
       setloading(true);
       if(!email && !password) {toast.error("All fields are required");return}
-      const res = await fetch("http://localhost:5000/login",{
+      const res = await fetch("http://192.168.1.5:5000/login",{
         method:'POST',
         headers: {
           "Content-Type": "application/json"
@@ -47,11 +47,12 @@ export function LoginFormDemo() {
   };
   return (
     <BackgroundGradientAnimation className="w-full h-screen flex justify-center items-center p-4 md:p-8">
-    <div className="w-full relative z-10 mx-auto rounded-lg py-6 md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-[#ffffff34]">
-      <h2 className="font-bold text-base sm:text-xl text-neutral-800 dark:text-neutral-200">
-        Welcome to Animated Notes Keeper
+    <div className="w-full lg:w-[60%] relative z-10 mx-auto rounded-lg py-6 md:rounded-2xl p-4 md:p-8 shadow-input bg-[#ffffff34]">
+      <img src="logo.png" alt="Logo" width={100} height={100}  className="mb-4 invert"/>
+      <h2 className="font-bold text-base sm:text-xl text-neutral-200">
+        Welcome to Animated Task Manager
       </h2>
-      <p className="text-neutral-600 text-sm max-w-sm mb-4 dark:text-neutral-300">
+      <p className="text-sm max-w-sm mb-4 text-neutral-300">
         Login to Continue
       </p>
 
@@ -65,14 +66,14 @@ export function LoginFormDemo() {
           <Input id="password" value={password} onChange={(e)=>setpassword(e.target.value)} placeholder="••••••••" type="password" />
         </LabelInputContainer>
         <button
-          className="bg-gradient-to-br disabled:bg-gray-400 mt-4 relative group/btn hover:-translate-y-1 transition-all  dark:bg-[#ffffff5e] w-full text-black rounded-md h-10 font-medium dark:shadow-[1px_1px_1px_1px_var(--zinc-900)_inset,-1px_-1px_-1px_-1px_var(--zinc-900)_inset]"
+          className="bg-gradient-to-br disabled:bg-gray-400 mt-4 relative group/btn hover:-translate-y-1 transition-all  bg-[#ffffff5e] w-full text-black rounded-md h-10 font-medium shadow-[1px_1px_1px_1px_var(--zinc-900)_inset,-1px_-1px_-1px_-1px_var(--zinc-900)_inset]"
           type="submit"
           disabled={loading}
           >
           Login &rarr;
           <BottomGradient />
         </button>
-        <p className="text-sm text-white text-center mt-4">Not Registered? <Link to={"/signup"} className="font-bold hover:underline">Signup</Link></p>
+        <p className="text-sm text-white text-center mt-8">Not Registered? <Link to={"/signup"} className="font-bold hover:underline">Signup</Link></p>
       </form>
     </div>
 </BackgroundGradientAnimation>
