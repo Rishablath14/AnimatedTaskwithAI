@@ -19,7 +19,7 @@ export const TaskProvider = ({ children }) => {
     if (!token) navigate("/login");
     const getTasks = async () => {
       try{
-        const res = await fetch("http://192.168.1.5:5000/tasks", {
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/tasks`, {
           method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,7 +34,7 @@ export const TaskProvider = ({ children }) => {
     }
     };
     getTasks();
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     if (filterStatus === "all") {
@@ -46,7 +46,7 @@ export const TaskProvider = ({ children }) => {
   }, [tasks, filterStatus]);
 
   const handleAddTask = async (newTask, newTaskDesc) => {
-    const res = await fetch("http://192.168.1.5:5000/add", {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -73,7 +73,7 @@ export const TaskProvider = ({ children }) => {
     const prev = tasks;
     const updatedTasks = tasks.filter((task) => task._id !== id);
     setTasks(updatedTasks);
-    const res = await fetch(`http://192.168.1.5:5000/delete/${id}`, {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/delete/${id}`, {
       method: "DELETE",
     });
     if (!res.ok) {
@@ -93,7 +93,7 @@ export const TaskProvider = ({ children }) => {
       return task;
     });
     setTasks(updatedTasks);
-    const res = await fetch(`http://192.168.1.5:5000/update/${id}`, {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/update/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -115,7 +115,7 @@ export const TaskProvider = ({ children }) => {
       return task;
     });
     setTasks(updatedTasks);
-    const res = await fetch(`http://192.168.1.5:5000/update/${id}`, {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/update/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -23,7 +23,7 @@ export function LoginFormDemo() {
     {
       setloading(true);
       if(!email && !password) {toast.error("All fields are required");return}
-      const res = await fetch("http://192.168.1.5:5000/login",{
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/login`,{
         method:'POST',
         headers: {
           "Content-Type": "application/json"

@@ -5,7 +5,7 @@ const Header = () => {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
   const handleLogout = async () => {
-    const res = await fetch("http://192.168.1.5:5000/logout");
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/logout`);
     if (res.ok) {
       localStorage.removeItem("token");
       localStorage.removeItem("name");

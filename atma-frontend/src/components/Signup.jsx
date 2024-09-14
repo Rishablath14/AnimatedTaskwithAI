@@ -21,7 +21,7 @@ export function SignupFormDemo() {
       setloading(true);
       if(!name && !email && !password) {toast.error("All fields are required");return}
       if(password.length<6){toast.error("Password should be minimum 6 characters long");return}
-      const res = await fetch("http://192.168.1.5:5000/register",{
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/register`,{
         method:'POST',
         headers: {
           "Content-Type": "application/json"

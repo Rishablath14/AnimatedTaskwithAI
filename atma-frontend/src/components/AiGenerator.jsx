@@ -16,7 +16,7 @@ const AiGenerator = () => {
 
   const handleGenerate = async () => {
     setLoading(true);
-    const res = await fetch("http://192.168.1.5:5000/generatewithai");
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/generatewithai`);
     const data = await res.json();
     setGenerated(JSON.parse(data));
     setLoading(false);
@@ -51,7 +51,7 @@ const AiGenerator = () => {
       )}
       <div
         ref={popupRef}
-        className={`fixed bottom-4 min-h-[350px] right-0 bg-white rounded-md dark:bg-zinc-900 shadow-lg transform transition-all duration-300 ease-in-out ${
+        className={`fixed bottom-4 min-h-[350px] right-0 bg-[#ffffffe5] rounded-md dark:bg-zinc-900 shadow-lg transform transition-all duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         } w-80 md:w-[550px] lg:w-[800px] p-4 z-40`}
       >

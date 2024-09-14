@@ -118,4 +118,6 @@ app.get("/logout", async function (req, res) {
   res.cookie("token", "");
   return res.status(201).json({ message: "Logout Successfully" });
 });
-app.listen(5000,()=>{console.log("Server Started at port 5000")});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT,()=>{console.log(`Server Started at port ${PORT}`)});
